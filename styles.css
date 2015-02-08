@@ -2,6 +2,7 @@ h1 {
     text-align: center;
     font-family: "Segoe UI";
     font-size: 24px;
+    color: silver;
 }
 nav {
     text-align: center;
@@ -16,4 +17,6 @@ body{
 }
 footer{
     text-align: center;
+    font-family: "Segoe UI";
+    color: silver;
 }
