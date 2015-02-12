@@ -14,9 +14,15 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    background-position:50% 50%;
 }
 footer{
     text-align: center;
     font-family: "Segoe UI";
     color: silver;
 }
+@media screen and (max-width: 990px) {
+.bodyclass{
+    background-image: url("images/bgmob.jpg");
+}
+    }
