@@ -4,3 +4,9 @@ c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyF
 c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\obj\Debug\MyFirstWebApplication.csprojResolveAssemblyReference.cache
 c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\obj\Debug\MyFirstWebApplication.dll
 c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\obj\Debug\MyFirstWebApplication.pdb
+C:\Users\Dmitriy\Documents\GitHub\dmitriykhomych.github.io\bin\MyFirstWebApplication.dll.config
+C:\Users\Dmitriy\Documents\GitHub\dmitriykhomych.github.io\bin\MyFirstWebApplication.dll
+C:\Users\Dmitriy\Documents\GitHub\dmitriykhomych.github.io\bin\MyFirstWebApplication.pdb
+C:\Users\Dmitriy\Documents\GitHub\dmitriykhomych.github.io\obj\Debug\MyFirstWebApplication.csprojResolveAssemblyReference.cache
+C:\Users\Dmitriy\Documents\GitHub\dmitriykhomych.github.io\obj\Debug\MyFirstWebApplication.dll
+C:\Users\Dmitriy\Documents\GitHub\dmitriykhomych.github.io\obj\Debug\MyFirstWebApplication.pdb

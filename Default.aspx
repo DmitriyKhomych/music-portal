@@ -9,10 +9,15 @@
     <link href="styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    <form id="form1" runat="server">
     <header>
     <h1>Dmytriy Khomych</h1>
     </header>
     <footer>More information sooner...or later... :D<br />
         Rewriting all this to ASP.Net</footer>
+        <p>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+        </p>
+    </form>
 </body>
 </html>
