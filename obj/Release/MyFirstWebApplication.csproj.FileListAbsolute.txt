@@ -1,0 +1,5 @@
+c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\bin\MyFirstWebApplication.dll.config
+c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\bin\MyFirstWebApplication.dll
+c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\bin\MyFirstWebApplication.pdb
+c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\obj\Release\MyFirstWebApplication.dll
+c:\users\dmitriy\documents\visual studio 2013\Projects\MyFirstWebApplication\MyFirstWebApplication\obj\Release\MyFirstWebApplication.pdb
