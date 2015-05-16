@@ -1,4 +1,5 @@
 ﻿body{
+    background-color:black;
     background-image: url("Images/bg.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -29,7 +30,7 @@ footer{
 p{    
     position:absolute;
     padding: 5px; 
-    left: 64px;
+    left: 59px;
     top:0;
     font-family: "Segoe UI";
     font-size: 10px;
