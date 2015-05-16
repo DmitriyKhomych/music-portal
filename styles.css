@@ -2,19 +2,51 @@
     background-image: url("Images/bg.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100%;
+    background-size: cover;
     background-position:center;
 }
+header{
+    position: fixed; 
+    right: 0; top: 10%;
+    width: 100%; 
+    text-align:center;
+}
 h1 {
-    text-align: center;
     font-family: "Segoe UI";
-    font-size: 24px;
+    font-size: 30px;
     color: silver;
+    text-shadow: 2px 2px 2px #000000 ;
 }
 footer{
-    text-align: center;
     font-family: "Segoe UI";
     color: silver;
-    margin-top: 5px;
-    margin-bottom: 6px;
+    position: fixed; 
+    bottom:5%;
+    width: 100%;     
+    text-align:center;
+    text-shadow: 2px 2px 2px #000000;
+}
+p{    
+    position:absolute;
+    padding: 5px; 
+    left: 64px;
+    top:0;
+    font-family: "Segoe UI";
+    font-size: 10px;
+    color: silver;
+    text-shadow: 2px 2px 2px #000000 ;
+}
+audio
+{    
+    visibility:hidden;
+    position:absolute;     
+    right: 0; top: 0;
+    padding: 5px; 
+}
+img {
+    width: 35px;
+    padding: 5px;
+    border: 0;
+    box-shadow: 2px;
+    display: inline;
 }
