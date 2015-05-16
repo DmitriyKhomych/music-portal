@@ -11,28 +11,10 @@ h1 {
     font-size: 24px;
     color: silver;
 }
-<<<<<<< HEAD
-=======
-nav {
-    text-align: center;
-    font-family: "Segoe UI";
-    font-size: 16px;
-}
-body{
-    background-image: url("images/bg.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
->>>>>>> parent of 1f486d7... Crossbrowser features
 footer{
     text-align: center;
     font-family: "Segoe UI";
     color: silver;
-<<<<<<< HEAD
     margin-top: 5px;
     margin-bottom: 6px;
 }
-=======
-}
->>>>>>> parent of 1f486d7... Crossbrowser features
