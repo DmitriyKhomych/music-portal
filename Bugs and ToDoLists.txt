@@ -1,0 +1,2 @@
+﻿- Incorrect preloading in Opera & IE;
+- The background image is not scaled in mobile version of site.

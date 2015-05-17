@@ -1,10 +1,10 @@
-﻿body{
-    background-color:black;
-    background-image: url("Images/bg.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position:center;
+﻿html{
+    background-color: #171717;
+    background: url("Images/bg.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 header{
     position: fixed; 
@@ -19,13 +19,10 @@ h1 {
     text-shadow: 2px 2px 2px #000000 ;
 }
 footer{
-    font-family: "Segoe UI";
-    color: silver;
     position: fixed; 
     bottom:5%;
     width: 100%;     
     text-align:center;
-    text-shadow: 2px 2px 2px #000000;
 }
 p{    
     position:absolute;
