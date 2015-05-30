@@ -4,8 +4,6 @@
 
 body {
 	background: #171717;
-
-    min-height: 90%;
 	color: #333;
 	font-size: 1em;
 	font-family: 'Questrial', 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -36,7 +34,7 @@ p {
 	height: 100vh;
 	overflow: hidden;
 	background: url(../img/bg.png) no-repeat center center;
-	background-size: auto ;
+	background-size: 120%;
 }
 
 .myheader h1 {
@@ -49,9 +47,9 @@ p {
 	width: 100%;
 	top: 25vh;
 	pointer-events: none;
-    font-family: "Segoe UI";
-    color: silver;
-    text-shadow: 2px 2px 2px #000000;
+    	font-family: "Segoe UI";
+    	color: silver;
+    	text-shadow: 2px 2px 2px #000000;
 }
 
 .bgtiltmage {
