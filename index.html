@@ -1,35 +1,48 @@
 <!DOCTYPE html>
-<html style="styles.css">
-<head>
-    <title>Dmytriy Khomych</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-    <!--Preloading background image-->
-    <script>
-        pic = new Image();
-        pic.src = "Images/bg.png";
-    </script>
-</head>
-<body>
-    <audio controls autoplay loop>
-        <source src="Music/Aquilo - Part Of Your Life (Croquet Club Remix).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <img id="share-buttons" src="Images/aquilo.jpg" />
-    <p>
-        Now playing:<br />
-        Aquilo - Part Of Your Life (Croquet Club Remix)
-    </p>
-    <header>
-        <h1>Dmytriy Khomych</h1>
-    </header>
-    <footer>
-        <a href="https://instagram.com/dmitriykhomych/" target="_blank"><img src="Images/instagram.png" alt="Instagram" /></a>
-        <a href="https://www.facebook.com/dmitriy.khomych" target="_blank"><img src="Images/facebook.png" alt="Facebook" /></a>
-        <a href="https://vk.com/dmitriykhomych" target="_blank"><img src="Images/vk.png" alt="VK" /></a>
-        <a href="https://twitter.com/DmitriyKhomych" target="_blank"><img src="Images/twitter.png" alt="Twitter" /></a>
-        <a href="https://plus.google.com/u/0/108110691705010026210/posts" target="_blank"><img src="Images/google.png" alt="Google" /></a>
-        <a href="https://www.linkedin.com/in/dmitriykhomych" target="_blank"><img src="Images/linkedin.png" alt="LinkedIn" /></a>
-    </footer>
-</body>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Dmytro Khomych</title>
+		<meta name="keywords" content=".Net, IT, Dmytro, Khomych, Rivne, Trance, Діма, Хомич, Рівне" />
+		<meta name="author" content="Khomych" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/tilteffect.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body onmousedown="return false" onselectstart="return false">
+			<header class="myheader">
+				<div class="bgtiltmage">
+					<div class="bgtiltmage__imgwrap">
+						<img class="bgtiltmage__img tilt-effect" data-tilt-options='{ "opacity" : 0.7, "movement": { "perspective" : 1500, "translateX" : 5, "translateY" : 5, "translateZ" : 5, "rotateX" : 10, "rotateY" : 10 } }' src="img/bg.png" />
+					</div>
+					<h1>Dmytro Khomych</h1>
+				</div>
+                <div class="links">
+                    <a href="https://www.facebook.com/dmitriy.khomych" target="_blank"><img class="icons" src="img/facebook.png" alt="Facebook" /></a>
+                    <a href="https://vk.com/dmitriykhomych" target="_blank"><img class="icons" src="img/vk.png" alt="VK" /></a>
+                    <a href="https://instagram.com/dmitriykhomych/" target="_blank"><img class="icons" src="img/instagram.png" alt="Instagram" /></a>
+                    <a href="https://twitter.com/DmitriyKhomych" target="_blank"><img class="icons" src="img/twitter.png" alt="Twitter" /></a>
+                    <a href="https://plus.google.com/u/0/108110691705010026210/posts" target="_blank"><img class="icons" src="img/google.png" alt="Google" /></a>
+                    <a href="https://www.linkedin.com/in/dmitriykhomych" target="_blank"><img class="icons" src="img/linkedin.png" alt="LinkedIn" /></a>
+                </div>
+                <div>
+                    <audio controls autoplay loop>
+                        <source src="music/Aquilo - Part Of Your Life (Croquet Club Remix).mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <img class="song_cover" src="img/aquilo.jpg" />
+                    <p>
+                        Now playing:<br />
+                        Aquilo - Part Of Your Life (Croquet Club Remix)
+                    </p>
+                </div>
+			</header>
+		<script src="js/tiltfx.js"></script>
+	</body>
 </html>
