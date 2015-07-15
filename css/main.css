@@ -1,7 +1,3 @@
-*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
-.clearfix:before, .clearfix:after {display: table;  content: ''; }
-.clearfix:after { clear: both; }
-
 body {
 	background: #171717;
 	color: #333;
@@ -37,13 +33,13 @@ p {
 	background-size: 120%;
 }
 
-    .mybody h1 {
+.mybody h1 {
         font-weight: 400;
         font-size: 4.25em;
         font-family: "Segoe UI";
         color: silver;
         text-shadow: 2px 2px 2px #000000;
-    }
+}
 
 
 .links {
@@ -53,6 +49,7 @@ p {
     text-align: center;
 }
 .icons {
+    margin-top: 50%;
     width: 40px;
     padding: 5px;
     box-shadow: 2px;
@@ -69,4 +66,11 @@ p {
     box-shadow: 2px;
     pointer-events: none;
     display: inline;
+}
+
+.player {
+
+}
+.mainLabel {
+    
 }
