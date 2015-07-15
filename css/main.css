@@ -29,7 +29,7 @@ p {
     text-shadow: 2px 2px 2px #000000;
 }
 
-.myheader {
+.mybody {
 	text-align: center;
 	height: 100vh;
 	overflow: hidden;
@@ -37,62 +37,14 @@ p {
 	background-size: 120%;
 }
 
-.myheader h1 {
-	margin: 0.5em 0 0;
-	letter-spacing: -1px;
-	font-weight: 400;
-	font-size: 4.25em;
-	line-height: 1;
-	position: absolute;
-	width: 100%;
-	top: 25vh;
-	pointer-events: none;
-    	font-family: "Segoe UI";
-    	color: silver;
-    	text-shadow: 2px 2px 2px #000000;
-}
+    .mybody h1 {
+        font-weight: 400;
+        font-size: 4.25em;
+        font-family: "Segoe UI";
+        color: silver;
+        text-shadow: 2px 2px 2px #000000;
+    }
 
-.bgtiltmage {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	overflow: hidden;
-}
-
-.bgtiltmage__imgwrap {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
-
-.bgtiltmage__imgwrap::after {
-	content: '';
-	position: absolute;
-	background: rgba(76,0,1,0.1);
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-}
-
-.bgtiltmage__img {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: auto;
-	height: 100vh;
-	-webkit-transform: translate3d(-50%,-50%,0);
-	transform: translate3d(-50%,-50%,0);
-}
-
-.bgtiltmage__imgwrap .tilt__back,
-.bgtiltmage__imgwrap .tilt__front {
-	background-size: auto 100vh;
-}
 
 .links {
     position: fixed;
