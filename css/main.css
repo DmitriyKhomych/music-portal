@@ -1,0 +1,76 @@
+body {
+	background: #171717;
+	color: #333;
+	font-size: 1em;
+	font-family: 'Questrial', 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+audio {
+    visibility: hidden;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    pointer-events: none;
+}
+
+p {
+    pointer-events: none;
+    position: absolute;
+    padding: 5px;
+    left: 59px;
+    top: 0;
+    font-family: "Segoe UI";
+    font-size: 10px;
+    color: silver;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.mybody {
+	text-align: center;
+	height: 100vh;
+	overflow: hidden;
+	background: url(../img/bg.png) no-repeat center center;
+	background-size: 120%;
+}
+
+.mybody h1 {
+        font-weight: 400;
+        font-size: 4.25em;
+        font-family: "Segoe UI";
+        color: silver;
+        text-shadow: 2px 2px 2px #000000;
+}
+
+
+.links {
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;
+}
+.icons {
+    margin-top: 50%;
+    width: 40px;
+    padding: 5px;
+    box-shadow: 2px;
+    display: inline;
+}
+
+.song_cover{
+    position: absolute;
+    width: 40px;
+    left: 0;
+    top: 0;
+    margin: 10px;
+    border: 0;
+    box-shadow: 2px;
+    pointer-events: none;
+    display: inline;
+}
+
+.player {
+
+}
+.mainLabel {
+    
+}
