@@ -169,6 +169,7 @@ a:focus {
 }
 
 #styled-button{
+    margin-top:40%;
 }
 @media(min-width:768px) {
     .intro {
