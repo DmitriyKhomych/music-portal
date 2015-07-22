@@ -36,7 +36,7 @@ function init() {
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 15,
+        zoom: 14,
 
         // The latitude and longitude to center the map (always required)
         center: new google.maps.LatLng(49.8316, 24.0394), // Lviv
@@ -45,7 +45,7 @@ function init() {
 
         scrollwheel: false,
         draggable: true,
-
+        
         // How you would like to style the map. 
         // This is where you would paste any style found on Snazzy Maps.
         styles: [{
