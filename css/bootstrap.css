@@ -1181,17 +1181,23 @@ h2,
 h3,
 h4,
 h5,
-h6,
 .h1,
 .h2,
 .h3,
 .h4,
 .h5,
-.h6 {
+.h6
+ {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
+}
+h6{
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #42dca3;
 }
 h1 small,
 h2 small,
@@ -4180,6 +4186,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+}
+.navbar-middle
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+    padding: 18px 18px;
+    z-index: -1;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
