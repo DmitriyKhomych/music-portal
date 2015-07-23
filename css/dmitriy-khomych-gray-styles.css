@@ -171,6 +171,9 @@ a:focus {
 #styled-button{
     margin-top:40%;
 }
+#styled-title{
+    margin-top:10%;
+}
 @media(min-width:768px) {
     .intro {
         height: 100%;
@@ -365,12 +368,30 @@ footer p {
     background: rgba(255,255,255,.2);
 }
 
+img {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */    
+    margin-bottom: 20px;
+}
+
+img:hover {
+        filter: none; /* IE6-9 */
+        -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */        
+}
+
 img::selection {
     background: 0 0;
 }
 
 img::-moz-selection {
     background: 0 0;
+}
+
+.transition {
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
 }
 
 body {
