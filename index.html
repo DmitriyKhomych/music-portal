@@ -23,7 +23,7 @@
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-65605424-1', 'auto');
         ga('send', 'pageview');
@@ -38,7 +38,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  Main
+                    <i class="fa fa-play-circle"></i> Main
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -84,9 +84,8 @@
     <!-- Most popular videos Section -->
     <section id="mostPopular" class="container content-section text-center">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div id="mostPopularContent" class="col-lg-12">
                 <h2>Most popular videos</h2>
-
             </div>
         </div>
     </section>
@@ -95,7 +94,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Favorites</h2>
-
+                
             </div>
         </div>
     </section>
@@ -135,5 +134,28 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVEBwp_T0qpU8K1dI6jslhGvRIcDXXyX0&sensor=false"></script>
     <!-- Custom JavaScript -->
     <script src="js/music.portal.js"></script>
+    <!-- YouTube API -->
+<script>
+    $(document).ready(function () {
+        $.get(
+            "https://www.googleapis.com/youtube/v3/search", {
+                part: 'snippet',
+                playlistId: "PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66",
+                maxResults: 6,
+                key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+            },
+            function (data) {
+                $.each(data.items, function (i, item) {
+                    //console.log(item.id.videoId);
+                    $("#mostPopularContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1\" frameborder=\"0\"></iframe>");
+
+                    //<iframe id="player" type="text/html" width="640" height="390"
+                    //src="http://www.youtube.com/embed/d8kCTPPwfpM?enablejsapi=1&origin=http://example.com"
+                    //frameborder="0"></iframe>
+            });
+            }
+        );
+    });
+</script>
 </body>
 </html>

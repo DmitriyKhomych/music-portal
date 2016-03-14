@@ -136,7 +136,6 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(../img/bg.png) no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -278,6 +277,10 @@ a:focus {
     margin-top: 100px;
 }
 
+.youtubePlayerWindow {
+    margin-top: 25px;
+}
+
 @media(min-width:767px) {
     .content-section {
         padding-top: 250px;
@@ -383,8 +386,4 @@ img::-moz-selection {
     -moz-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
-}
-
-body {
-    webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
