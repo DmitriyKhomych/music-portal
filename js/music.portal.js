@@ -24,13 +24,14 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 $(document).ready(function () {
-    //Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
-    //and appending video players with the video items we have got using Google API key
+    // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
+    // and appending video players with the video items we have got using Google API key
     $.get(
         "https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet',
-            playlistId: "PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66",
+            playlistId: 'PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66', //Id of YT Most Popular Music Videos Playlist
             maxResults: 6,
+            orderBy: 'viewCount', //Ordering from the most viewed
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
@@ -39,47 +40,36 @@ $(document).ready(function () {
             });
         }
     );
-    //Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist) for specific region
-    //and appending video players with the video items we have got using Google API key
-    //$.get(
-    //    "https://www.googleapis.com/youtube/v3/search", {
-    //        part: 'snippet',
-    //        playlistId: "PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66",
-    //        maxResults: 6,
-    //        key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-    //    },
-    //    function (data) {
-    //        $.each(data.items, function (i, item) {
-    //            $("#popularInRegionContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
-    //        });
-    //    }
-    //);
-    //
+
+    // Getting playlistId depending on region UK (it is needed to check region by geolocation info later)
     $.get(
         "https://www.googleapis.com/youtube/v3/videoCategories", {
             part: 'snippet',
-            regionCode: 'UA',
+            regionCode: 'UK',
             maxResults: 6,
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
+            localStorage.removeItem('localVideoCategories');
             localStorage.setItem('localVideoCategories', JSON.stringify(data));
         }
     );
-
+    // Using JSON for saving received data locally
     var localVideoCategoriesList = JSON.parse(localStorage.getItem('localVideoCategories'));
     var localMusicPlaylist;
+
     $.each(localVideoCategoriesList.items, function (i, item) {
         if (item.snippet.title == "Music") {
-            console.log(item.snippet.channelId);
             localMusicPlaylist = item.snippet.channelId;
         }
     });
+
     console.log(localMusicPlaylist);
+    // Getting the list of videos on YouTube Music Channel depending on region
     $.get(
-            "https://www.googleapis.com/youtube/v3/videoCategories", {
+            "https://www.googleapis.com/youtube/v3/search", {
                 part: 'snippet',
-                regionCode: localMusicPlaylist,
+                playlistId: localMusicPlaylist,
                 maxResults: 6,
                 key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
             },
@@ -89,10 +79,25 @@ $(document).ready(function () {
                 });
             }
         );
+
+    // Generating the list of most popular music videos
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search", {
+            part: 'snippet',
+            playlistId: 'PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66', //Id of YT Most Popular Music Videos Playlist
+            maxResults: 20,
+            orderBy: 'viewCount', //Ordering from the most viewed
+            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+        },
+        function (data) {
+            console.log(data);
+            $.each(data.items, function (i, item) {
+                $("#ratingsContent").append("<h6>" + (i + 1) + ". <a href=\"http://www.youtube.com/watch?v=" + item.id.videoId + "\" target=\"_blank\">" + item.snippet.title + "</a></h6>");
+            });
+        }
+    );
 });
 
-$('#ratingsContent').append("<h5>" + JSON.parse(localStorage.getItem('localVideoCategories')) + "</h5>");
-console.log(JSON.parse(localStorage.getItem('localVideoCategories')));
 // Google Maps Scripts
 // When the window has finished loading create our google map below
 // Get current coordinates via HTML5 feature or use initial coords of Lviv city
