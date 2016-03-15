@@ -7,7 +7,7 @@ $(window).scroll(function() {
     }
 });
 
-// jQuery for page scrolling feature - requires jQuery Easing plugin
+// jQuery for page scrolling feature
 $(function() {
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
@@ -23,9 +23,91 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+$(document).ready(function () {
+    //Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
+    //and appending video players with the video items we have got using Google API key
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search", {
+            part: 'snippet',
+            playlistId: "PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66",
+            maxResults: 6,
+            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+        },
+        function (data) {
+            $.each(data.items, function (i, item) {
+                $("#mostPopularContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
+            });
+        }
+    );
+    //Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist) for specific region
+    //and appending video players with the video items we have got using Google API key
+    //$.get(
+    //    "https://www.googleapis.com/youtube/v3/search", {
+    //        part: 'snippet',
+    //        playlistId: "PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66",
+    //        maxResults: 6,
+    //        key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+    //    },
+    //    function (data) {
+    //        $.each(data.items, function (i, item) {
+    //            $("#popularInRegionContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
+    //        });
+    //    }
+    //);
+    //
+    $.get(
+        "https://www.googleapis.com/youtube/v3/videoCategories", {
+            part: 'snippet',
+            regionCode: 'UA',
+            maxResults: 6,
+            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+        },
+        function (data) {
+            localStorage.setItem('localVideoCategories', JSON.stringify(data));
+        }
+    );
+
+    var localVideoCategoriesList = JSON.parse(localStorage.getItem('localVideoCategories'));
+    var localMusicPlaylist;
+    $.each(localVideoCategoriesList.items, function (i, item) {
+        if (item.snippet.title == "Music") {
+            console.log(item.snippet.channelId);
+            localMusicPlaylist = item.snippet.channelId;
+        }
+    });
+    console.log(localMusicPlaylist);
+    $.get(
+            "https://www.googleapis.com/youtube/v3/videoCategories", {
+                part: 'snippet',
+                regionCode: localMusicPlaylist,
+                maxResults: 6,
+                key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+            },
+            function (data) {
+                $.each(data.items, function (i, item) {
+                    $("#popularInRegionContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
+                });
+            }
+        );
+});
+
+$('#ratingsContent').append("<h5>" + JSON.parse(localStorage.getItem('localVideoCategories')) + "</h5>");
+console.log(JSON.parse(localStorage.getItem('localVideoCategories')));
 // Google Maps Scripts
 // When the window has finished loading create our google map below
+// Get current coordinates via HTML5 feature or use initial coords of Lviv city
+var lat = 49.8316;
+var lon = 24.0394;
+
+getLocation();
 google.maps.event.addDomListener(window, 'load', init);
+
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+    });
+}
 
 function init() {
     // Basic options for a simple Google Map
@@ -35,10 +117,9 @@ function init() {
         zoom: 14,
 
         // The latitude and longitude to center the map (always required), the coordinates of Lviv are used
-        center: new google.maps.LatLng(49.8316, 24.0394), 
+        center: new google.maps.LatLng(lat, lon), 
 
         // Disables the default Google Maps UI components
-
         scrollwheel: false,
         draggable: true,
         
@@ -153,7 +234,6 @@ function init() {
             }]
         }]
     };
-
     // Get the HTML DOM element that will contain your map 
     // We are using a div with id="map" seen below in the <body>
     var mapElement = document.getElementById('map');
@@ -163,7 +243,7 @@ function init() {
 
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
     var image = 'img/map-marker.png';
-    var myLatLng = new google.maps.LatLng(49.8316, 24.0394);
+    var myLatLng = new google.maps.LatLng(lat, lon);
     var beachMarker = new google.maps.Marker({
         position: myLatLng,
         map: map,

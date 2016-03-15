@@ -17,17 +17,6 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <!--Google Analytics API-->
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-65605424-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <!-- Navigation -->
@@ -41,10 +30,8 @@
                     <i class="fa fa-play-circle"></i> Main
                 </a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                 <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
@@ -52,7 +39,7 @@
                         <a class="page-scroll" href="#mostPopular">Most popular videos</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#favorites">Favorites</a>
+                        <a class="page-scroll" href="#popularInRegion">popular in region</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#ratings">Ratings</a>
@@ -66,7 +53,7 @@
         </div>
         <!-- /.container -->
     </nav>
-    <!-- Intro Header -->
+    <!-- Header -->
     <header class="intro">
         <div class="intro-body">
             <div class="container">
@@ -90,18 +77,18 @@
         </div>
     </section>
     <!-- Favorites Section -->
-    <section id="favorites" class="container content-section text-center">
+    <section id="popularInRegion" class="container content-section text-center">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Favorites</h2>
-                
+            <div id="popularInRegionContent" class="col-lg-12">
+                <h2>Popular in region</h2>
+
             </div>
         </div>
     </section>
     <!-- Ratings Section -->
     <section id="ratings" class="container content-section text-center">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div id="ratingsContent" class="col-lg-12">
                 <h2>Ratings</h2>
 
             </div>
@@ -117,7 +104,11 @@
         </div>
     </section>
     <!-- Map Section -->
-    <div id="map"></div>
+    <section class="container content-section text-center">
+        <div class="row">
+            <h2>You are now here:</h2>
+            <div id="map"></div></div>
+</section>
     <!-- Footer -->
     <footer>
         <div class="container text-center">
@@ -131,31 +122,19 @@
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
     <!-- Google Maps API Key -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVEBwp_T0qpU8K1dI6jslhGvRIcDXXyX0&sensor=false"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVEBwp_T0qpU8K1dI6jslhGvRIcDXXyX0"></script>
     <!-- Custom JavaScript -->
     <script src="js/music.portal.js"></script>
-    <!-- YouTube API -->
-<script>
-    $(document).ready(function () {
-        $.get(
-            "https://www.googleapis.com/youtube/v3/search", {
-                part: 'snippet',
-                playlistId: "PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66",
-                maxResults: 6,
-                key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-            },
-            function (data) {
-                $.each(data.items, function (i, item) {
-                    //console.log(item.id.videoId);
-                    $("#mostPopularContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1\" frameborder=\"0\"></iframe>");
-
-                    //<iframe id="player" type="text/html" width="640" height="390"
-                    //src="http://www.youtube.com/embed/d8kCTPPwfpM?enablejsapi=1&origin=http://example.com"
-                    //frameborder="0"></iframe>
-            });
-            }
-        );
-    });
-</script>
+    <!--Google Analytics API-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-65605424-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
