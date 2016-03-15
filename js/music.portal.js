@@ -1,5 +1,5 @@
 // jQuery to collapse the navbar on scroll
-$(window).scroll(function() {
+$(window).scroll(function () {
     if ($(".navbar").offset().top > 50) {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
     } else {
@@ -8,8 +8,8 @@ $(window).scroll(function() {
 });
 
 // jQuery for page scrolling feature
-$(function() {
-    $('a.page-scroll').bind('click', function(event) {
+$(function () {
+    $('a.page-scroll').bind('click', function (event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: $($anchor.attr('href')).offset().top
@@ -19,7 +19,7 @@ $(function() {
 });
 
 // Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
+$('.navbar-collapse ul li a').click(function () {
     $('.navbar-toggle:visible').click();
 });
 
@@ -36,7 +36,7 @@ $(document).ready(function () {
         },
         function (data) {
             $.each(data.items, function (i, item) {
-                $("#mostPopularContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
+                $("#mostPopularContent").append("<iframe id=\"playerMP" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
             });
         }
     );
@@ -75,7 +75,7 @@ $(document).ready(function () {
             },
             function (data) {
                 $.each(data.items, function (i, item) {
-                    $("#popularInRegionContent").append("<iframe id=\"player" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
+                    $("#popularInRegionContent").append("<iframe id=\"playerPIR" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
                 });
             }
         );
@@ -122,12 +122,12 @@ function init() {
         zoom: 14,
 
         // The latitude and longitude to center the map (always required), the coordinates of Lviv are used
-        center: new google.maps.LatLng(lat, lon), 
+        center: new google.maps.LatLng(lat, lon),
 
         // Disables the default Google Maps UI components
         scrollwheel: false,
         draggable: true,
-        
+
         // How you would like to style the map. 
         // This is where you would paste any style found on Snazzy Maps.
         styles: [{
