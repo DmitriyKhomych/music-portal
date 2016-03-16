@@ -1,3 +1,15 @@
+$(window).load(function () {
+    // Animate loader off screen
+    //$(".preLoadScreen").fadeOut(7000, function() {
+    //    $(this).remove();
+    //});
+    $(".preLoadScreen").animate({
+        opacity: 0
+    }, 7000, function() {
+            $(this).remove();
+        });
+});
+
 // jQuery to collapse the navbar on scroll
 $(window).scroll(function () {
     if ($(".navbar").offset().top > 50) {
@@ -64,7 +76,6 @@ $(document).ready(function () {
         }
     });
 
-    console.log(localMusicPlaylist);
     // Getting the list of videos on YouTube Music Channel depending on region
     $.get(
             "https://www.googleapis.com/youtube/v3/search", {
@@ -90,7 +101,6 @@ $(document).ready(function () {
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
-            console.log(data);
             $.each(data.items, function (i, item) {
                 $("#ratingsContent").append("<h6>" + (i + 1) + ". <a href=\"http://www.youtube.com/watch?v=" + item.id.videoId + "\" target=\"_blank\">" + item.snippet.title + "</a></h6>");
             });
@@ -111,12 +121,14 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
+        console.log("position is located!");
     });
 }
 
 function init() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+    console.log(lat + " " + lon);
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
         zoom: 14,
