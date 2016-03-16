@@ -5,7 +5,7 @@ $(window).load(function () {
     //});
     $(".preLoadScreen").animate({
         opacity: 0
-    }, 7000, function() {
+    }, 10000, function() {
             $(this).remove();
         });
 });
