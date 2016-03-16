@@ -53,43 +53,43 @@ $(document).ready(function () {
         }
     );
 
-    // Getting playlistId depending on region UK (it is needed to check region by geolocation info later)
-    $.get(
-        "https://www.googleapis.com/youtube/v3/videoCategories", {
-            part: 'snippet',
-            regionCode: 'UK',
-            maxResults: 6,
-            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-        },
-        function (data) {
-            localStorage.removeItem('localVideoCategories');
-            localStorage.setItem('localVideoCategories', JSON.stringify(data));
-        }
-    );
-    // Using JSON for saving received data locally
-    var localVideoCategoriesList = JSON.parse(localStorage.getItem('localVideoCategories'));
-    var localMusicPlaylist;
+    //// Getting playlistId depending on region UK (it is needed to check region by geolocation info later)
+    //$.get(
+    //    "https://www.googleapis.com/youtube/v3/videoCategories", {
+    //        part: 'snippet',
+    //        regionCode: 'UK',
+    //        maxResults: 6,
+    //        key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+    //    },
+    //    function (data) {
+    //        localStorage.removeItem('localVideoCategories');
+    //        localStorage.setItem('localVideoCategories', JSON.stringify(data));
+    //    }
+    //);
+    //// Using JSON for saving received data locally
+    //var localVideoCategoriesList = JSON.parse(localStorage.getItem('localVideoCategories'));
+    //var localMusicPlaylist;
 
-    $.each(localVideoCategoriesList.items, function (i, item) {
-        if (item.snippet.title == "Music") {
-            localMusicPlaylist = item.snippet.channelId;
-        }
-    });
+    //$.each(localVideoCategoriesList.items, function (i, item) {
+    //    if (item.snippet.title == "Music") {
+    //        localMusicPlaylist = item.snippet.channelId;
+    //    }
+    //});
 
-    // Getting the list of videos on YouTube Music Channel depending on region
-    $.get(
-            "https://www.googleapis.com/youtube/v3/search", {
-                part: 'snippet',
-                playlistId: localMusicPlaylist,
-                maxResults: 6,
-                key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-            },
-            function (data) {
-                $.each(data.items, function (i, item) {
-                    $("#popularInRegionContent").append("<iframe id=\"playerPIR" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
-                });
-            }
-        );
+    //// Getting the list of videos on YouTube Music Channel depending on region
+    //$.get(
+    //        "https://www.googleapis.com/youtube/v3/search", {
+    //            part: 'snippet',
+    //            playlistId: localMusicPlaylist,
+    //            maxResults: 6,
+    //            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+    //        },
+    //        function (data) {
+    //            $.each(data.items, function (i, item) {
+    //                $("#popularInRegionContent").append("<iframe id=\"playerPIR" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
+    //            });
+    //        }
+    //    );
 
     // Generating the list of most popular music videos
     $.get(
