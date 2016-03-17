@@ -1,11 +1,8 @@
+// Animate loading screen
 $(window).load(function () {
-    // Animate loader off screen
-    //$(".preLoadScreen").fadeOut(7000, function() {
-    //    $(this).remove();
-    //});
     $(".preLoadScreen").animate({
         opacity: 0
-    }, 10000, function() {
+    }, 6000, 'linear', function() {
             $(this).remove();
         });
 });
@@ -35,25 +32,50 @@ $('.navbar-collapse ul li a').click(function () {
     $('.navbar-toggle:visible').click();
 });
 
+// JS class for YouTube players
+function YoutubePlayer(id, section, video) {
+    this.playerId = id;
+    this.sectionName = section;
+    this.videoId = video;
+
+    this.markup = function() {
+        return "<iframe id=\"player" + this.sectionName + this.playerId + "\" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + this.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>";
+    }
+}
+
+//JS class for "most viewed videos" rating items
+function RatingItem(id, video, title) {
+    this.itemId = id;
+    this.videoId = video;
+    this.videoTitle = title;
+
+    this.markup = function() {
+        return "<h6><span>" + (this.itemId + 1) + ". </span><a href=\"http://www.youtube.com/watch?v=" + this.videoId + "\" target=\"_blank\">" + this.videoTitle + "</a></h6>";
+    }
+}
+
 $(document).ready(function () {
+    var player;
+    var ratingItem;
     // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
     // and appending video players with the video items we have got using Google API key
     $.get(
         "https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet',
-            playlistId: 'PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66', //Id of YT Most Popular Music Videos Playlist
+            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
             maxResults: 6,
             orderBy: 'viewCount', //Ordering from the most viewed
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
             $.each(data.items, function (i, item) {
-                $("#mostPopularContent").append("<iframe id=\"playerMP" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
+                player = new YoutubePlayer(i, "MP", item.id.videoId);
+                $("#mostPopularContent").append(player.markup());
             });
         }
     );
 
-    //// Getting playlistId depending on region UK (it is needed to check region by geolocation info later)
+    //// Getting playlistId depending on region Ukraine (it is needed to check region by geolocation info later)
     //$.get(
     //    "https://www.googleapis.com/youtube/v3/videoCategories", {
     //        part: 'snippet',
@@ -102,39 +124,33 @@ $(document).ready(function () {
         },
         function (data) {
             $.each(data.items, function (i, item) {
-                $("#ratingsContent").append("<h6>" + (i + 1) + ". <a href=\"http://www.youtube.com/watch?v=" + item.id.videoId + "\" target=\"_blank\">" + item.snippet.title + "</a></h6>");
+                ratingItem = new RatingItem(i, item.id.videoId, item.snippet.title);
+                $("#ratingsContent").append(ratingItem.markup());
             });
         }
     );
 });
-
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        localStorage.setItem("lat", position.coords.latitude);
+        localStorage.setItem("lon", position.coords.longitude);
+    });
+}
 // Google Maps Scripts
 // When the window has finished loading create our google map below
 // Get current coordinates via HTML5 feature or use initial coords of Lviv city
-var lat = 49.8316;
-var lon = 24.0394;
-
-getLocation();
 google.maps.event.addDomListener(window, 'load', init);
 
-function getLocation() {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
-        console.log("position is located!");
-    });
-}
-
 function init() {
+    getLocation();
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-    console.log(lat + " " + lon);
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
         zoom: 14,
 
         // The latitude and longitude to center the map (always required), the coordinates of Lviv are used
-        center: new google.maps.LatLng(lat, lon),
+        center: new window.google.maps.LatLng(localStorage.getItem("lat"), localStorage.getItem("lon")),
 
         // Disables the default Google Maps UI components
         scrollwheel: false,
@@ -256,12 +272,12 @@ function init() {
     var mapElement = document.getElementById('map');
 
     // Create the Google Map using out element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
+    var map = new window.google.maps.Map(mapElement, mapOptions);
 
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
     var image = 'img/map-marker.png';
-    var myLatLng = new google.maps.LatLng(lat, lon);
-    var beachMarker = new google.maps.Marker({
+    var myLatLng = new window.google.maps.LatLng(localStorage.getItem("lat"), localStorage.getItem("lon"));
+    var beachMarker = new window.google.maps.Marker({
         position: myLatLng,
         map: map,
         icon: image
