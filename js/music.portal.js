@@ -39,7 +39,7 @@ function YoutubePlayer(id, section, video) {
     this.videoId = video;
 
     this.markup = function() {
-        return "<iframe id=\"player" + this.sectionName + this.playerId + "\" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + this.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>";
+        return "<iframe id=\"player" + this.sectionName + this.playerId + "\" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-sm-6 col-md-6 col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + this.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>";
     }
 }
 
@@ -136,13 +136,14 @@ function getLocation() {
         localStorage.setItem("lon", position.coords.longitude);
     });
 }
+
 // Google Maps Scripts
 // When the window has finished loading create our google map below
 // Get current coordinates via HTML5 feature or use initial coords of Lviv city
+getLocation();
 google.maps.event.addDomListener(window, 'load', init);
 
 function init() {
-    getLocation();
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
