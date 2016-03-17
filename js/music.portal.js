@@ -39,7 +39,7 @@ function YoutubePlayer(id, section, video) {
     this.videoId = video;
 
     this.markup = function() {
-        return "<iframe id=\"player" + this.sectionName + this.playerId + "\" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-sm-6 col-md-6 col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + this.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>";
+        return "<iframe id=\"player" + this.sectionName + this.playerId + "\" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-xs-12 col-sm-12 col-md-12 col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + this.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>";
     }
 }
 
@@ -50,7 +50,7 @@ function RatingItem(id, video, title) {
     this.videoTitle = title;
 
     this.markup = function() {
-        return "<h6><span>" + (this.itemId + 1) + ". </span><a href=\"http://www.youtube.com/watch?v=" + this.videoId + "\" target=\"_blank\">" + this.videoTitle + "</a></h6>";
+        return "<h6>" + (this.itemId + 1) + ". <a href=\"http://www.youtube.com/watch?v=" + this.videoId + "\" target=\"_blank\">" + this.videoTitle + "</a></h6>";
     }
 }
 
