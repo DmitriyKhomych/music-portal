@@ -1,10 +1,41 @@
-// Animate loading screen
 $(window).load(function () {
+    // Animate loading screen
     $(".preLoadScreen").animate({
         opacity: 0
-    }, 6000, 'linear', function() {
-            $(this).remove();
-        });
+    }, 6000, 'linear', function () {
+        $(this).remove();
+    });
+
+    // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
+    // and appending video players with the video items we have got using Google API key
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search", {
+            part: 'snippet',
+            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
+            maxResults: 6,
+            orderBy: 'viewCount', //Ordering from the most viewed
+            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+        },
+        function (data) {
+            localStorage.removeItem('mostPopularVideos');
+            localStorage.setItem('mostPopularVideos', JSON.stringify(data));
+        }
+    );
+
+    // Generating the list of most popular music videos
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search", {
+            part: 'snippet',
+            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
+            maxResults: 20,
+            orderBy: 'viewCount', //Ordering from the most viewed
+            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+        },
+        function (data) {
+            localStorage.removeItem('ratings');
+            localStorage.setItem('ratings', JSON.stringify(data));
+        }
+    );
 });
 
 // jQuery to collapse the navbar on scroll
@@ -38,8 +69,8 @@ function YoutubePlayer(id, section, video) {
     this.sectionName = section;
     this.videoId = video;
 
-    this.markup = function() {
-        return "<iframe id=\"player" + this.sectionName + this.playerId + "\" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-xs-12 col-sm-12 col-md-12 col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + this.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>";
+    this.markup = function () {
+        return "<div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 embed-responsive embed-responsive-16by9\"><iframe id=\"player" + this.sectionName + this.playerId + "\" type=\"text/html\" class=\"embed-responsive-item youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + this.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe></div>";
     }
 }
 
@@ -49,86 +80,46 @@ function RatingItem(id, video, title) {
     this.videoId = video;
     this.videoTitle = title;
 
-    this.markup = function() {
-        return "<h6>" + (this.itemId + 1) + ". <a href=\"http://www.youtube.com/watch?v=" + this.videoId + "\" target=\"_blank\">" + this.videoTitle + "</a></h6>";
+    this.markup = function () {
+        return "<li>" + "<a href=\"http://www.youtube.com/watch?v=" + this.videoId + "\" target=\"_blank\">" + this.videoTitle + "</a><a href=\"\" class=\"infoButton\" data-toggle=\"modal\" data-target=\"#myModal\" data-videoId=\"" + this.videoId + "\"> <i class=\"fa fa-info-circle\"></i></a></li>";
     }
 }
 
 $(document).ready(function () {
+    // Using JSON for saving received data locally
+    var videos = JSON.parse(localStorage.getItem('mostPopularVideos'));
+    var ratings = JSON.parse(localStorage.getItem('ratings'));
+
+    // Generating markup for videos and ratings sections from JSON
     var player;
     var ratingItem;
-    // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
-    // and appending video players with the video items we have got using Google API key
-    $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
-            part: 'snippet',
-            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
-            maxResults: 6,
-            orderBy: 'viewCount', //Ordering from the most viewed
-            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-        },
-        function (data) {
-            $.each(data.items, function (i, item) {
-                player = new YoutubePlayer(i, "MP", item.id.videoId);
-                $("#mostPopularContent").append(player.markup());
-            });
-        }
-    );
 
-    //// Getting playlistId depending on region Ukraine (it is needed to check region by geolocation info later)
-    //$.get(
-    //    "https://www.googleapis.com/youtube/v3/videoCategories", {
-    //        part: 'snippet',
-    //        regionCode: 'UK',
-    //        maxResults: 6,
-    //        key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-    //    },
-    //    function (data) {
-    //        localStorage.removeItem('localVideoCategories');
-    //        localStorage.setItem('localVideoCategories', JSON.stringify(data));
-    //    }
-    //);
-    //// Using JSON for saving received data locally
-    //var localVideoCategoriesList = JSON.parse(localStorage.getItem('localVideoCategories'));
-    //var localMusicPlaylist;
+    console.log(videos);
+    console.log(ratings);
 
-    //$.each(localVideoCategoriesList.items, function (i, item) {
-    //    if (item.snippet.title == "Music") {
-    //        localMusicPlaylist = item.snippet.channelId;
-    //    }
-    //});
+    $.each(videos.items, function (i, item) {
+        player = new YoutubePlayer(i, "MP", item.id.videoId);
+        $("#mostPopularContent").append(player.markup());
+    });
+    $.each(ratings.items, function (i, item) {
+        ratingItem = new RatingItem(i, item.id.videoId, item.snippet.title);
+        $("#ratingsContent").append(ratingItem.markup());
+    });
 
-    //// Getting the list of videos on YouTube Music Channel depending on region
-    //$.get(
-    //        "https://www.googleapis.com/youtube/v3/search", {
-    //            part: 'snippet',
-    //            playlistId: localMusicPlaylist,
-    //            maxResults: 6,
-    //            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-    //        },
-    //        function (data) {
-    //            $.each(data.items, function (i, item) {
-    //                $("#popularInRegionContent").append("<iframe id=\"playerPIR" + i + " \" type=\"text/html\" width=\"640\" height=\"360\" class=\"col-lg-6 youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + item.id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe>");
-    //            });
-    //        }
-    //    );
-
-    // Generating the list of most popular music videos
-    $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
-            part: 'snippet',
-            playlistId: 'PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66', //Id of YT Most Popular Music Videos Playlist
-            maxResults: 20,
-            orderBy: 'viewCount', //Ordering from the most viewed
-            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-        },
-        function (data) {
-            $.each(data.items, function (i, item) {
-                ratingItem = new RatingItem(i, item.id.videoId, item.snippet.title);
-                $("#ratingsContent").append(ratingItem.markup());
-            });
-        }
-    );
+    // Full modal with info
+    $('.infoButton').click(function (event) {
+        var ratingItem = $.grep(ratings.items, function (element, index) {
+            console.log($(event.target).parent());
+            console.log($(event.target).parent().attr('data-videoId'));
+            return element.id.videoId == $(event.target).parent().attr('data-videoId');
+        });
+        console.log(ratingItem[0]);
+        $('.modal-body').empty();
+        $('.modal-body').append("<div class=\"embed-responsive embed-responsive-16by9\"><iframe id=\"playerPopup\" type=\"text/html\" class=\"embed-responsive-item youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + ratingItem[0].id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe></div>");
+        $('.modal-body').append("<a href=\"https://www.youtube.com/channel/" + ratingItem[0].snippet.channelId + "\" target=\"_blank\" class=\"channel-link\">Go to channel: " + ratingItem[0].snippet.channelTitle + "</a>");
+        $('.modal-body').append("<h5 class=\"video-description\">Description:</h5>");
+        $('.modal-body').append("<p class=\"description-content\">" + ratingItem[0].snippet.description + "</p>");
+    });
 });
 function getLocation() {
     navigator.geolocation.getCurrentPosition(function (position) {

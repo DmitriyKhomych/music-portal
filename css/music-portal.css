@@ -21,7 +21,6 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     margin: 0 0 25px;
-    font-size: 18px;
     line-height: 1.5;
 }
 
@@ -33,11 +32,38 @@ p {
     }
 }
 
+.description-content {
+    margin: 0 0 0 10px;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.channel-link {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
 a {
     color: #42dca3;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
+}
+
+.modal-body a {
+    margin-left: 10px;
+}
+
+li {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    list-style-position: inside;
 }
 
 a:hover,
@@ -50,6 +76,10 @@ a:focus {
     font-weight: 400;
 }
 
+.navbar-nav {
+    height: 50px !important;
+}
+
 .navbar-custom {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,.3);
@@ -58,58 +88,58 @@ a:focus {
     background-color: #000;
 }
 
-.navbar-custom .navbar-brand {
-    font-weight: 700;
-}
+    .navbar-custom .navbar-brand {
+        font-weight: 700;
+    }
 
-.navbar-custom .navbar-brand:focus {
-    outline: 0;
-}
+        .navbar-custom .navbar-brand:focus {
+            outline: 0;
+        }
 
-.navbar-custom .navbar-brand .navbar-toggle {
-    padding: 4px 6px;
-    font-size: 16px;
-    color: #fff;
-}
+        .navbar-custom .navbar-brand .navbar-toggle {
+            padding: 4px 6px;
+            font-size: 16px;
+            color: #fff;
+        }
 
-.navbar-custom .navbar-brand .navbar-toggle:focus,
-.navbar-custom .navbar-brand .navbar-toggle:active {
-    outline: 0;
-}
+            .navbar-custom .navbar-brand .navbar-toggle:focus,
+            .navbar-custom .navbar-brand .navbar-toggle:active {
+                outline: 0;
+            }
 
-.navbar-custom a {
-    color: #fff;
-}
+    .navbar-custom a {
+        color: #fff;
+    }
 
-.navbar-custom .nav li a {
-    -webkit-transition: background .3s ease-in-out;
-    -moz-transition: background .3s ease-in-out;
-    transition: background .3s ease-in-out;
-}
+    .navbar-custom .nav li a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+    }
 
-.navbar-custom .nav li a:hover {
-    outline: 0;
-    color: rgba(255,255,255,.8);
-    background-color: transparent;
-}
+        .navbar-custom .nav li a:hover {
+            outline: 0;
+            color: rgba(255,255,255,.8);
+            background-color: transparent;
+        }
 
-.navbar-custom .nav li a:focus,
-.navbar-custom .nav li a:active {
-    outline: 0;
-    background-color: transparent;
-}
+        .navbar-custom .nav li a:focus,
+        .navbar-custom .nav li a:active {
+            outline: 0;
+            background-color: transparent;
+        }
 
-.navbar-custom .nav li.active {
-    outline: 0;
-}
+    .navbar-custom .nav li.active {
+        outline: 0;
+    }
 
-.navbar-custom .nav li.active a {
-    background-color: rgba(255,255,255,.3);
-}
+        .navbar-custom .nav li.active a {
+            background-color: rgba(255,255,255,.3);
+        }
 
-.navbar-custom .nav li.active a:hover {
-    color: #fff;
-}
+            .navbar-custom .nav li.active a:hover {
+                color: #fff;
+            }
 
 @media(min-width:768px) {
     .navbar-custom {
@@ -122,11 +152,11 @@ a:focus {
         transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
-    .navbar-custom.top-nav-collapse {
-        padding: 0;
-        border-bottom: 1px solid rgba(255,255,255,.3);
-        background: #000;
-    }
+        .navbar-custom.top-nav-collapse {
+            padding: 0;
+            border-bottom: 1px solid rgba(255,255,255,.3);
+            background: #000;
+        }
 }
 
 .intro {
@@ -142,42 +172,44 @@ a:focus {
     -o-background-size: cover;
 }
 
-.intro .intro-body {
-    display: table-cell;
-    vertical-align: middle;
+    .intro .intro-body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+        .intro .intro-body .brand-heading {
+            font-size: 40px;
+            opacity: 0.8;
+        }
+
+        .intro .intro-body .intro-text {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+#styled-button {
+    margin-top: 40%;
 }
 
-.intro .intro-body .brand-heading {
-    font-size: 40px;    
-    opacity: 0.8;      
+#styled-title {
+    margin-top: 10%;
 }
 
-.intro .intro-body .intro-text {
-    font-size: 18px;
-    opacity: 0.8;
-}
-
-#styled-button{
-    margin-top:40%;
-}
-#styled-title{
-    margin-top:10%;
-}
 @media(min-width:768px) {
     .intro {
         height: 100%;
         padding: 0;
     }
 
-    .intro .intro-body .brand-heading {
-        font-size: 50px;
-        opacity: 0.8;
-    }
+        .intro .intro-body .brand-heading {
+            font-size: 50px;
+            opacity: 0.8;
+        }
 
-    .intro .intro-body .intro-text {
-        font-size: 26px;
-        opacity: 0.8;
-    }
+        .intro .intro-body .intro-text {
+            font-size: 26px;
+            opacity: 0.8;
+        }
 }
 
 .btn-circle {
@@ -186,7 +218,7 @@ a:focus {
     margin-top: 15px;
     padding: 7px 16px;
     border: 2px solid #fff;
-    border-radius: 100%!important;
+    border-radius: 100% !important;
     font-size: 40px;
     color: #fff;
     background: 0 0;
@@ -195,32 +227,32 @@ a:focus {
     transition: background .3s ease-in-out;
 }
 
-.btn-circle:hover,
-.btn-circle:focus {
-    outline: 0;
-    color: #fff;
-    background: rgba(255,255,255,.1);
-}
+    .btn-circle:hover,
+    .btn-circle:focus {
+        outline: 0;
+        color: #fff;
+        background: rgba(255,255,255,.1);
+    }
 
-.btn-circle i.animated {
-    -webkit-transition-property: -webkit-transform;
-    -webkit-transition-duration: 1s;
-    -moz-transition-property: -moz-transform;
-    -moz-transition-duration: 1s;
-}
+    .btn-circle i.animated {
+        -webkit-transition-property: -webkit-transform;
+        -webkit-transition-duration: 1s;
+        -moz-transition-property: -moz-transform;
+        -moz-transition-duration: 1s;
+    }
 
-.btn-circle:hover i.animated {
-    -webkit-animation-name: pulse;
-    -moz-animation-name: pulse;
-    -webkit-animation-duration: 1.5s;
-    -moz-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;
-}
+    .btn-circle:hover i.animated {
+        -webkit-animation-name: pulse;
+        -moz-animation-name: pulse;
+        -webkit-animation-duration: 1.5s;
+        -moz-animation-duration: 1.5s;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-timing-function: linear;
+    }
 
-@-webkit-keyframes pulse {    
+@-webkit-keyframes pulse {
     0% {
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -237,7 +269,7 @@ a:focus {
     }
 }
 
-@-moz-keyframes pulse {    
+@-moz-keyframes pulse {
     0% {
         -moz-transform: scale(1);
         transform: scale(1);
@@ -254,9 +286,16 @@ a:focus {
     }
 }
 
-.no-js #loader { display: none;  }
+.no-js #loader {
+    display: none;
+}
 
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
 
 .preLoadScreen {
     position: fixed;
@@ -274,7 +313,7 @@ a:focus {
 }
 
 .youtubePlayerWindow {
-    margin-top: 25px;
+    margin: 10px;
 }
 
 @media(min-width:767px) {
@@ -307,13 +346,13 @@ a:focus {
     background-color: transparent;
 }
 
-.btn-default:hover,
-.btn-default:focus {
-    border: 1px solid #42dca3;
-    outline: 0;
-    color: #000;
-    background-color: #42dca3;
-}
+    .btn-default:hover,
+    .btn-default:focus {
+        border: 1px solid #42dca3;
+        outline: 0;
+        color: #000;
+        background-color: #42dca3;
+    }
 
 ul.banner-social-buttons {
     margin-top: 0;
@@ -335,15 +374,28 @@ ul.banner-social-buttons {
     ul.banner-social-buttons li:last-child {
         margin-bottom: 0;
     }
+        
+    #ratings, #about, #mostPopular, #geo {
+        margin-top: 100px;
+    }
+}
+
+.modal-body {
+    color: black;
+}
+
+.video-description {
+    margin: 10px 0 10px 10px;
 }
 
 footer {
     padding: 50px 0;
 }
 
-footer p {
-    margin: 0;
-}
+    footer p {
+        margin: 0;
+        
+    }
 
 ::-moz-selection {
     text-shadow: none;
@@ -359,22 +411,22 @@ footer p {
 
 img {
     filter: gray; /* IE6-9 */
-    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */    
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
     margin-bottom: 20px;
 }
 
-img:hover {
+    img:hover {
         filter: none; /* IE6-9 */
-        -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */        
-}
+        -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+    }
 
-img::selection {
-    background: 0 0;
-}
+    img::selection {
+        background: 0 0;
+    }
 
-img::-moz-selection {
-    background: 0 0;
-}
+    img::-moz-selection {
+        background: 0 0;
+    }
 
 .transition {
     -webkit-transition: 1s;
