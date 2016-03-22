@@ -91,7 +91,7 @@ $(document).ready(function () {
     var player;
     var ratingItem;
 
-    if (typeof (videos) == "undefined") window.location.reload();
+    if (videos == 'undefined' || videos == 'null') window.location.reload();
 
     console.log(videos);
     console.log(ratings);
