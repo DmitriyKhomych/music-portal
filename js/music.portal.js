@@ -17,7 +17,6 @@ $(window).load(function () {
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
-            localStorage.removeItem('mostPopularVideos');
             localStorage.setItem('mostPopularVideos', JSON.stringify(data));
         }
     );
@@ -32,7 +31,6 @@ $(window).load(function () {
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
-            localStorage.removeItem('ratings');
             localStorage.setItem('ratings', JSON.stringify(data));
         }
     );
