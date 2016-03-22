@@ -5,35 +5,6 @@ $(window).load(function () {
     }, 6000, 'linear', function () {
         $(this).remove();
     });
-
-    // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
-    // and appending video players with the video items we have got using Google API key
-    $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
-            part: 'snippet',
-            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
-            maxResults: 6,
-            orderBy: 'viewCount', //Ordering from the most viewed
-            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-        },
-        function (data) {
-            localStorage.setItem('mostPopularVideos', JSON.stringify(data));
-        }
-    );
-
-    // Generating the list of most popular music videos
-    $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
-            part: 'snippet',
-            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
-            maxResults: 20,
-            orderBy: 'viewCount', //Ordering from the most viewed
-            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
-        },
-        function (data) {
-            localStorage.setItem('ratings', JSON.stringify(data));
-        }
-    );
 });
 
 // jQuery to collapse the navbar on scroll
@@ -84,6 +55,34 @@ function RatingItem(id, video, title) {
 }
 
 $(document).ready(function () {
+    // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
+    // and appending video players with the video items we have got using Google API key
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search", {
+            part: 'snippet',
+            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
+            maxResults: 6,
+            orderBy: 'viewCount', //Ordering from the most viewed
+            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+        },
+        function (data) {
+            localStorage.setItem('mostPopularVideos', JSON.stringify(data));
+        }
+    );
+
+    // Generating the list of most popular music videos
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search", {
+            part: 'snippet',
+            playlistId: 'PLgnDUQH42_TupeEMbPnruNBTljl2b1zrT', //Id of YT Most Popular Music Videos Playlist
+            maxResults: 20,
+            orderBy: 'viewCount', //Ordering from the most viewed
+            key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
+        },
+        function (data) {
+            localStorage.setItem('ratings', JSON.stringify(data));
+        }
+    );
     // Using JSON for saving received data locally
     var videos = JSON.parse(localStorage.getItem('mostPopularVideos'));
     var ratings = JSON.parse(localStorage.getItem('ratings'));
