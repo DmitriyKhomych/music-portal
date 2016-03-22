@@ -55,6 +55,7 @@ function RatingItem(id, video, title) {
 }
 
 $(document).ready(function () {
+    var videos, ratings;
     // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
     // and appending video players with the video items we have got using Google API key
     $.get(
@@ -66,7 +67,8 @@ $(document).ready(function () {
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
-            localStorage.setItem('mostPopularVideos', JSON.stringify(data));
+            videos = data;
+            //localStorage.setItem('mostPopularVideos', JSON.stringify(data));
         }
     );
 
@@ -80,12 +82,13 @@ $(document).ready(function () {
             key: 'AIzaSyCNkKCSC7DqlTrL4CAUCVtCrhJelj6nhaE'
         },
         function (data) {
+            ratings = data;
             localStorage.setItem('ratings', JSON.stringify(data));
         }
     );
     // Using JSON for saving received data locally
-    var videos = JSON.parse(localStorage.getItem('mostPopularVideos'));
-    var ratings = JSON.parse(localStorage.getItem('ratings'));
+    //var videos = JSON.parse(localStorage.getItem('mostPopularVideos'));
+    //var ratings = JSON.parse(localStorage.getItem('ratings'));
 
     // Generating markup for videos and ratings sections from JSON
     var player;
