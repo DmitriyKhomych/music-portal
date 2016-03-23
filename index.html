@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Dmytro, Khomych, Lviv, Music, Portal" />
-    <meta name="author" content="Dmytro Khomych"/>
+    <meta name="author" content="Dmytro Khomych" />
     <meta http-equiv="cache-control" content="max-age=0" />
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
@@ -30,6 +30,8 @@
     <script src="js/jquery.easing.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Validator for Bootstrap -->
+    <script src="js/validator.js"></script>
     <!-- Google Maps API Key -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVEBwp_T0qpU8K1dI6jslhGvRIcDXXyX0"></script>
     <!-- Custom JavaScript -->
@@ -112,6 +114,15 @@
             </div>
         </div>
     </section>
+    <!--Contact section-->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div>
+                <h2>Contact us</h2>
+                <button class="btn contact-btn" id="send-mail-btn" type="button" data-toggle="modal" data-target="#contactModal">Send mail</button>
+            </div>
+        </div>
+    </section>
     <!-- Map Section -->
     <section id="geo" class="container content-section text-center">
         <div class="row">
@@ -125,12 +136,12 @@
             <p>Copyright &copy; Dmytro Khomych 2016</p>
         </div>
     </footer>
-    <!-- Modal -->
-    <div id="myModal" class="modal" role="dialog">
+    <!-- Modal for info of rating items -->
+    <div id="itemInfoModal" class="modal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-body">
+                <div id="rating-body" class="modal-body">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -139,6 +150,35 @@
 
         </div>
     </div>
+    <!-- Modal for contacts -->
+    <div id="contactModal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <p>Send us a message</p>
+                </div>
+                <div class="modal-body">
+                    <!--Form submition will be implemented later-->
+                    <form class="contact" id="contactForm" name="contact">
+                        <label class="label" id="name" for="name">Your Name</label><br>
+                        <input type="text" name="name" class="input-large" required><br>
+                        <label class="label" id="email" for="email">Your E-mail</label><br>
+                        <input type="email" name="email" class="input-large" required><br>
+                        <label class="label" id="message" for="message">Enter a Message</label><br>
+                        <textarea name="message" class="input-large" required></textarea>
+                        <div class="modal-footer">
+                            <input class="btn btn-success" type="submit" value="Send" id="submit">
+                            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Google Analytics API -->
     <!--<script>
         (function (i, s, o, g, r, a, m) {

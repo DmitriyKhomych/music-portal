@@ -2,7 +2,7 @@ $(window).load(function () {
     // Animate loading screen
     $(".preLoadScreen").animate({
         opacity: 0
-    }, 6000, 'linear', function () {
+    }, 4000, 'linear', function () {
         $(this).remove();
     });
 });
@@ -50,7 +50,7 @@ function RatingItem(id, video, title) {
     this.videoTitle = title;
 
     this.markup = function () {
-        return "<li>" + "<a href=\"http://www.youtube.com/watch?v=" + this.videoId + "\" target=\"_blank\">" + this.videoTitle + "</a><a href=\"\" class=\"infoButton\" data-toggle=\"modal\" data-target=\"#myModal\" data-videoId=\"" + this.videoId + "\"> <i class=\"fa fa-info-circle\"></i></a></li>";
+        return "<li>" + "<a href=\"http://www.youtube.com/watch?v=" + this.videoId + "\" target=\"_blank\">" + this.videoTitle + "</a><a href=\"\" class=\"info-btn\" data-toggle=\"modal\" data-target=\"#itemInfoModal\" data-videoId=\"" + this.videoId + "\"> <i class=\"fa fa-info-circle\"></i></a></li>";
     }
 }
 
@@ -87,39 +87,42 @@ $(document).ready(function () {
     var videos = JSON.parse(localStorage.getItem('mostPopularVideos'));
     var ratings = JSON.parse(localStorage.getItem('ratings'));
 
+    // Checking for browser issue after the first visit of user
+    if (videos == null) {
+         if (!alert('Seems that it is your first visit, so localStorage is not initialized yet =(\nPlease, click OK to refresh page. Enjoy!')) {
+              window.location.reload();
+         }
+    }
+
     // Generating markup for videos and ratings sections from JSON
     var player;
     var ratingItem;
-
-    if (videos == 'undefined' || videos == 'null') window.location.reload();
-
-    console.log(videos);
-    console.log(ratings);
 
     $.each(videos.items, function (i, item) {
         player = new YoutubePlayer(i, "MP", item.id.videoId);
         $("#mostPopularContent").append(player.markup());
     });
+
     $.each(ratings.items, function (i, item) {
         ratingItem = new RatingItem(i, item.id.videoId, item.snippet.title);
         $("#ratingsContent").append(ratingItem.markup());
     });
 
-    // Full modal with info
-    $('.infoButton').click(function (event) {
+    // Full modal window with info
+    $('.info-btn').click(function (event) {
         var ratingItem = $.grep(ratings.items, function (element, index) {
-            console.log($(event.target).parent());
-            console.log($(event.target).parent().attr('data-videoId'));
             return element.id.videoId == $(event.target).parent().attr('data-videoId');
         });
-        console.log(ratingItem[0]);
-        $('.modal-body').empty();
-        $('.modal-body').append("<div class=\"embed-responsive embed-responsive-16by9\"><iframe id=\"playerPopup\" type=\"text/html\" class=\"embed-responsive-item youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + ratingItem[0].id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe></div>");
-        $('.modal-body').append("<a href=\"https://www.youtube.com/channel/" + ratingItem[0].snippet.channelId + "\" target=\"_blank\" class=\"channel-link\">Go to channel: " + ratingItem[0].snippet.channelTitle + "</a>");
-        $('.modal-body').append("<h5 class=\"video-description\">Description:</h5>");
-        $('.modal-body').append("<p class=\"description-content\">" + ratingItem[0].snippet.description + "</p>");
+        $('#rating-body').empty();
+        $('#rating-body').append("<div class=\"embed-responsive embed-responsive-16by9\"><iframe id=\"playerPopup\" type=\"text/html\" class=\"embed-responsive-item youtubePlayerWindow\" src=\"http://www.youtube.com/embed/" + ratingItem[0].id.videoId + "?enablejsapi=1?wmode=opaque\" frameborder=\"0\"></iframe></div>");
+        $('#rating-body').append("<a href=\"https://www.youtube.com/channel/" + ratingItem[0].snippet.channelId + "\" target=\"_blank\" class=\"channel-link\">Go to channel: " + ratingItem[0].snippet.channelTitle + "</a>");
+        $('#rating-body').append("<h5 class=\"video-description\">Description:</h5>");
+        $('#rating-body').append("<p class=\"description-content\">" + ratingItem[0].snippet.description + "</p>");
     });
+
+   
 });
+
 function getLocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
         localStorage.setItem("lat", position.coords.latitude);
@@ -258,7 +261,8 @@ function init() {
             }]
         }]
     };
-    // Get the HTML DOM element that will contain your map 
+
+    // Get the HTML DOM element that will contain map 
     // We are using a div with id="map" seen below in the <body>
     var mapElement = document.getElementById('map');
 
@@ -268,6 +272,12 @@ function init() {
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
     var image = 'img/map-marker.png';
     var myLatLng = new window.google.maps.LatLng(localStorage.getItem("lat"), localStorage.getItem("lon"));
+    
+    // Showing message if user did not allowed to see his or her location
+    if (localStorage.getItem("lat") == null) {
+        $("<h6 style=\"color:red;\">Please, share your location for correct displaying of the map.</h5>").insertBefore('#map');
+    }
+
     var beachMarker = new window.google.maps.Marker({
         position: myLatLng,
         map: map,
