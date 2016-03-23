@@ -55,6 +55,8 @@ function RatingItem(id, video, title) {
 }
 
 $(document).ready(function () {
+    // Open page from the top every time
+    $(this).scrollTop(0);
     // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
     // and appending video players with the video items we have got using Google API key
     $.get(
