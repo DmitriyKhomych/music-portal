@@ -57,6 +57,7 @@ function RatingItem(id, video, title) {
 $(document).ready(function () {
     // Open page from the top every time
     $(this).scrollTop(0);
+
     // Getting the list of most popular videos on YouTube Music Channel (Pop Music playlist)
     // and appending video players with the video items we have got using Google API key
     $.get(
@@ -85,13 +86,14 @@ $(document).ready(function () {
             localStorage.setItem('ratings', JSON.stringify(data));
         }
     );
+
     // Using JSON for saving received data locally
     var videos = JSON.parse(localStorage.getItem('mostPopularVideos'));
     var ratings = JSON.parse(localStorage.getItem('ratings'));
 
     // Checking for browser issue after the first visit of user
     if (videos == null) {
-         if (!alert('Seems that it is your first visit, so localStorage is not initialized yet =(\nPlease, click OK to refresh page. Enjoy!')) {
+         if (!alert('Seems that it is your first visit, so localStorage is not initialized yet =(\nPlease, click OK to load page once again.')) {
               window.location.reload();
          }
     }
@@ -121,8 +123,6 @@ $(document).ready(function () {
         $('#rating-body').append("<h5 class=\"video-description\">Description:</h5>");
         $('#rating-body').append("<p class=\"description-content\">" + ratingItem[0].snippet.description + "</p>");
     });
-
-   
 });
 
 function getLocation() {
@@ -280,6 +280,7 @@ function init() {
         $("<h6 style=\"color:red;\">Please, share your location for correct displaying of the map.</h5>").insertBefore('#map');
     }
 
+    //marker for Google Maps
     var beachMarker = new window.google.maps.Marker({
         position: myLatLng,
         map: map,
