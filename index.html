@@ -58,7 +58,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#mostPopular">Most popular music videos</a>
+                        <a class="page-scroll" href="#most-popular">Most popular music videos</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#ratings">Ratings</a>
@@ -79,7 +79,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                         <h1 class="brand-heading" id="styled-title">Music Portal</h1>
-                        <a href="#mostPopular" id="styled-button" class="btn btn-circle page-scroll">
+                        <a href="#most-popular" id="styled-button" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -88,7 +88,7 @@
         </div>
     </header>
     <!-- Most popular videos Section -->
-    <section id="mostPopular" class="container content-section text-center">
+    <section id="most-popular" class="container content-section text-center">
         <div class="row">
             <div id="mostPopularContent">
                 <h2>Most popular music videos</h2>
@@ -119,7 +119,7 @@
         <div class="row">
             <div>
                 <h2>Contact us</h2>
-                <button class="btn contact-btn" id="send-mail-btn" type="button" data-toggle="modal" data-target="#contactModal">Send mail</button>
+                <button class="btn contact-btn" id="send-mail-btn" type="button" data-toggle="modal" data-target="#contact-modal">Send mail</button>
             </div>
         </div>
     </section>
@@ -137,7 +137,7 @@
         </div>
     </footer>
     <!-- Modal for info of rating items -->
-    <div id="itemInfoModal" class="modal" role="dialog">
+    <div id="item-info-modal" class="modal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -151,17 +151,17 @@
         </div>
     </div>
     <!-- Modal for contacts -->
-    <div id="contactModal" class="modal" role="dialog">
+    <div id="contact-modal" class="modal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
-                    <p>Send us a message</p>
+                    <p id="send-message-paragraph">Send us a message</p>
                 </div>
                 <div class="modal-body">
                     <!--Form submition will be implemented later-->
-                    <form class="contact" id="contactForm" name="contact">
+                    <form class="contact" id="contact-form" name="contact">
                         <label class="label" id="name" for="name">Your Name</label><br>
                         <input type="text" name="name" class="input-large" required><br>
                         <label class="label" id="email" for="email">Your E-mail</label><br>

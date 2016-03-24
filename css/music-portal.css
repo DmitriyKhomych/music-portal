@@ -331,7 +331,7 @@ a:focus {
     height: 200px;
 }
 
-.youtubePlayerWindow {
+.youtube-player-window {
     margin: 10px;
 }
 
@@ -397,7 +397,7 @@ ul.banner-social-buttons {
             margin-bottom: 0;
         }
 
-    #ratings, #about, #mostPopular, #geo {
+    #ratings, #about, #most-popular, #geo {
         margin-top: 100px;
     }
 }
@@ -470,21 +470,25 @@ img {
 #send-mail-btn {
     color: #42dca3;
 }
-#send-mail-btn:hover {
-    color: #1d9b6c;
-}
 
-#contactModal, .label {
+    #send-mail-btn:hover {
+        color: #1d9b6c;
+    }
+
+#contact-modal, .label {
     color: black;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
     text-align: center;
-    
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
-textarea{ 
+#send-message-paragraph {
+    margin: 0;
+}
+
+textarea {
     width: 75%;
 }
